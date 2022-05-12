@@ -1,9 +1,9 @@
 _id: req_wrk_2979b35e9f144b468981bed0a0a0ee91f021bcd3
 type: Request
 parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee913a21295d
-modified: 1652368522627
+modified: 1652379018968
 created: 1652360646850
-url: "{{ base_url }}/store/order/{{ orderId }}"
+url: "{{ base_url }}/store/order/{{ _['orderId '] }}"
 name: Find purchase order by ID
 description: ""
 method: GET
