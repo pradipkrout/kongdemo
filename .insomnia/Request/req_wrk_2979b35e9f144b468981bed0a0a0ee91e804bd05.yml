@@ -3,7 +3,7 @@ type: Request
 parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee911b034c38
 modified: 1652368478759
 created: 1652360646857
-url: "{{ base_url }}/pet/123"
+url: "{{ base_url }}/pet/{{ petId }}"
 name: Deletes a pet
 description: ""
 method: DELETE

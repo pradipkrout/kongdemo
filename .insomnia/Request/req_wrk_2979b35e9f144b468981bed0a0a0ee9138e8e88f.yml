@@ -3,7 +3,7 @@ type: Request
 parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee9112dea96f
 modified: 1652368578010
 created: 1652360646827
-url: "{{ base_url }}/user/abc"
+url: "{{ base_url }}/user/{{ username }}"
 name: Delete user
 description: ""
 method: DELETE
