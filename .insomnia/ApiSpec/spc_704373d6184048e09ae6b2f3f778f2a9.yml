@@ -1,7 +1,7 @@
 _id: spc_704373d6184048e09ae6b2f3f778f2a9
 type: ApiSpec
 parentId: wrk_2979b35e9f144b468981bed0a0a0ee91
-modified: 1652367294739
+modified: 1652367472120
 created: 1652360191728
 fileName: Petstore.yaml
 contents: >-
@@ -1050,18 +1050,6 @@ contents: >-
           "type": "apiKey",
           "name": "api_key",
           "in": "header"
-        },
-        "petstore_auth": {
-          "type": "oauth2",
-          "flows": {
-            "implicit": {
-              "authorizationUrl": "https://petstore.swagger.io/oauth/authorize",
-              "scopes": {
-                "read:pets": "read your pets",
-                "write:pets": "modify pets in your account"
-              }
-            }
-          }
         }
       }
     }
