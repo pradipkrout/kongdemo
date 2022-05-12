@@ -1,7 +1,7 @@
 _id: findPetsByStatus
 type: Request
 parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee911b034c38
-modified: 1652360184136
+modified: 1652368491247
 created: 1652106134545
 url: "{{ base_url }}/pet/findByStatus"
 name: Finds Pets by status
@@ -12,6 +12,7 @@ parameters:
   - name: status
     disabled: false
     value: available
+    id: pair_dc47373c56d340c38181952cccbaa4fc
 headers: []
 authentication:
   type: oauth2

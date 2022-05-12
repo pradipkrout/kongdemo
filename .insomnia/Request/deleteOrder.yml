@@ -1,9 +1,9 @@
 _id: deleteOrder
 type: Request
 parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee913a21295d
-modified: 1652360184123
+modified: 1652368550184
 created: 1652106134525
-url: "{{ base_url }}/store/order/{{ orderId }}"
+url: "{{ base_url }}/store/order/123"
 name: Delete purchase order by ID
 description: For valid response try integer IDs with positive integer value.
   Negative or non-integer values will generate API errors

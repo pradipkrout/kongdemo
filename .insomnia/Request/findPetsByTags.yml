@@ -1,7 +1,7 @@
 _id: findPetsByTags
 type: Request
 parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee911b034c38
-modified: 1652360184135
+modified: 1652368492802
 created: 1652106134543
 url: "{{ base_url }}/pet/findByTags"
 name: Finds Pets by tags
@@ -13,6 +13,7 @@ parameters:
   - name: tags
     disabled: false
     value: string
+    id: pair_dbfacadaa95b4d7bbbeda43c5505ae4b
 headers: []
 authentication:
   type: oauth2

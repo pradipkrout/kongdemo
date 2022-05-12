@@ -1,9 +1,9 @@
 _id: req_wrk_2979b35e9f144b468981bed0a0a0ee91a4608701
 type: Request
 parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee911b034c38
-modified: 1652361773658
+modified: 1652368445180
 created: 1652360646860
-url: "{{ base_url }}/pet/{{ petId }}"
+url: "{{ base_url }}/pet/123"
 name: Updates a pet in the store with form data
 description: ""
 method: POST

@@ -1,9 +1,9 @@
 _id: req_wrk_2979b35e9f144b468981bed0a0a0ee9115e47538
 type: Request
 parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee913a21295d
-modified: 1652360646846
+modified: 1652368535445
 created: 1652360646846
-url: "{{ base_url }}/store/order/{{ orderId }}"
+url: "{{ base_url }}/store/order/123"
 name: Delete purchase order by ID
 description: ""
 method: DELETE

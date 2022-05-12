@@ -1,9 +1,9 @@
 _id: uploadFile
 type: Request
 parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee911b034c38
-modified: 1652361781213
+modified: 1652368488228
 created: 1652106134554
-url: "{{ base_url }}/pet/{{ petId }}/uploadImage"
+url: "{{ base_url }}/pet/123/uploadImage"
 name: uploads an image
 description: ""
 method: POST

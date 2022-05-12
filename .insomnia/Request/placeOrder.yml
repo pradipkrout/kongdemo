@@ -1,7 +1,7 @@
 _id: placeOrder
 type: Request
 parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee913a21295d
-modified: 1652360184125
+modified: 1652368538164
 created: 1652106134530
 url: "{{ base_url }}/store/order"
 name: Place an order for a pet
@@ -23,6 +23,7 @@ headers:
   - name: Content-Type
     disabled: false
     value: application/json
+    id: pair_180863167b22488aa10b4484289b758a
 authentication: {}
 metaSortKey: -1652106134530
 isPrivate: false
