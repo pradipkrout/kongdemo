@@ -1,0 +1,21 @@
+_id: deleteUser
+type: Request
+parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee9112dea96f
+modified: 1652360184115
+created: 1652106134504
+url: "{{ base_url }}/user/{{ username }}"
+name: Delete user
+description: This can only be done by the logged in user.
+method: DELETE
+body: {}
+parameters: []
+headers: []
+authentication: {}
+metaSortKey: -1652106134504
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

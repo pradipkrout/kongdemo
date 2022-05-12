@@ -1,0 +1,41 @@
+_id: uploadFile
+type: Request
+parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee911b034c38
+modified: 1652361781213
+created: 1652106134554
+url: "{{ base_url }}/pet/{{ petId }}/uploadImage"
+name: uploads an image
+description: ""
+method: POST
+body:
+  mimeType: multipart/form-data
+  params:
+    - name: additionalMetadata
+      disabled: true
+      value: string
+      id: pair_f4d612bafb334e4bae0ffcbab0114028
+    - name: file
+      disabled: true
+      type: file
+      id: pair_16add6f05f7f415a91067e82506d7e49
+parameters: []
+headers:
+  - name: Content-Type
+    disabled: false
+    value: multipart/form-data
+    id: pair_678bbea64a614a58b9828319d4287884
+authentication:
+  type: oauth2
+  grantType: authorization_code
+  disabled: true
+  authorizationUrl: https://petstore.swagger.io/oauth/authorize
+  clientId: "{{ client_id }}"
+  scope: write:pets read:pets
+metaSortKey: -1652106134554
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

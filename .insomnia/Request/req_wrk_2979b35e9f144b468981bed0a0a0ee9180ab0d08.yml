@@ -1,0 +1,32 @@
+_id: req_wrk_2979b35e9f144b468981bed0a0a0ee9180ab0d08
+type: Request
+parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee911b034c38
+modified: 1652361764392
+created: 1652360646895
+url: "{{ base_url }}/pet/findByStatus"
+name: Finds Pets by status
+description: ""
+method: GET
+body: {}
+parameters:
+  - name: status
+    disabled: false
+    value: available
+    id: pair_75001dc1627845e18aa18fcb94222b92
+headers: []
+authentication:
+  clientId: "{{ oauth2ClientId }}"
+  grantType: implicit
+  scope: read:pets write:pets
+  type: oauth2
+  redirectUrl: "{{ oauth2RedirectUrl }}"
+  authorizationUrl: https://petstore.swagger.io/oauth/authorize
+  disabled: true
+metaSortKey: -1652360646895
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global

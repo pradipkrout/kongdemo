@@ -1,0 +1,51 @@
+_id: req_wrk_2979b35e9f144b468981bed0a0a0ee9123acbe44
+type: Request
+parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee911b034c38
+modified: 1652361337485
+created: 1652360646899
+url: "{{ base_url }}/pet"
+name: Add a new pet to the store
+description: ""
+method: POST
+body:
+  mimeType: application/json
+  text: |-
+    {
+      "id": 234,
+      "category": {
+        "id": 12,
+        "name": "cat"
+      },
+      "name": "cattie",
+      "photoUrls": [
+        "cat"
+      ],
+      "tags": [
+        {
+          "id": 23,
+          "name": "cattiep"
+        }
+      ],
+      "status": "Available"
+    }
+parameters: []
+headers:
+  - name: Content-Type
+    value: application/json
+    id: pair_db51b75f195a42609276d6dda4fd4437
+authentication:
+  clientId: "{{ oauth2ClientId }}"
+  grantType: implicit
+  scope: read:pets write:pets
+  type: oauth2
+  redirectUrl: "{{ oauth2RedirectUrl }}"
+  authorizationUrl: https://petstore.swagger.io/oauth/authorize
+  disabled: true
+metaSortKey: -1652360646899
+isPrivate: false
+settingStoreCookies: true
+settingSendCookies: true
+settingDisableRenderRequestBody: false
+settingEncodeUrl: true
+settingRebuildPath: true
+settingFollowRedirects: global
