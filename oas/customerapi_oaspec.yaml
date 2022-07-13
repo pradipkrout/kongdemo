@@ -1,44 +1,58 @@
 openapi: 3.0.0
 info:
   title: Customer API
-  version: v1.0
+  version: v1
 servers:
-- url: http://localhost:80/api
+- url: /
 paths:
-  /v1/customers:
-    get:
-      description: Returns list of customers
-      operationId: Get Customers
+  /customers:
+    post:
+      description: This method will Creates customer
+      operationId: POST_customers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+            example:
+              customerId: 1234
+              firstName: John
+              lastName: Doe
+              phone: +91 987654321
+              email: jhon.doe@gmail.com
+        required: true
       responses:
         200:
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Customers'
+                example:
+                  message: customer details updated
+  /{customerId}:
+    get:
+      description: Return customer information by customerId
+      operationId: GET_customerId
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                example:
+                  customerId: 1234
+                  firstName: John
+                  lastName: Doe
+                  phone: +91 987654321
+                  email: jhon.doe@gmail.com
+    parameters:
+    - name: customerId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
 components:
-  schemas:
-    Customers:
-      type: array
-      example:
-      - id: 4789
-        customerName: Robert DeNiro
-      - id: 36987
-        customerName: Al Pacino
-      items:
-        $ref: '#/components/schemas/Customer'
-    Customer:
-      required:
-      - customerName
-      - id
-      type: object
-      properties:
-        id:
-          type: integer
-          description: Identifier of customer
-        customerName:
-          type: string
-          description: Customer Name
-      description: Customer information
+  schemas: {}
   responses: {}
   parameters: {}
   examples: {}

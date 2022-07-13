@@ -7,17 +7,26 @@ services:
     protocol: http
     host: localhost
     port: 80
-    path: /api
+    path: /
     plugins: []
     routes:
       - tags:
           - OAS3_import
           - OAS3file_customerapi_oaspec.yaml
-        name: Customer_API-Get_Customers
+        name: Customer_API-POST_customers
+        methods:
+          - POST
+        paths:
+          - /customers$
+        strip_path: false
+      - tags:
+          - OAS3_import
+          - OAS3file_customerapi_oaspec.yaml
+        name: Customer_API-GET_customerId
         methods:
           - GET
         paths:
-          - /v1/customers$
+          - /(?<customerId>[^\/]+)$
         strip_path: false
     tags:
       - OAS3_import
