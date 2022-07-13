@@ -1,0 +1,138 @@
+openapi: 3.0.0
+info:
+  title: Calculator
+  version: v1
+servers:
+- url: /
+paths:
+  /addition:
+    get:
+      operationId: GET_addition
+      parameters:
+      - name: number1
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: number2
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                example:
+                  message: result is 19
+        400:
+          content:
+            application/json:
+              schema:
+                example:
+                  message: Bad request
+        401:
+          content:
+            application/json:
+              schema:
+                example:
+                  message: Un Auth error
+  /sub:
+    post:
+      operationId: POST_sub
+      parameters:
+      - name: num1
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: num2
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                example:
+                  message: result is 10
+        500:
+          description: |
+            internal server error
+  /multi:
+    patch:
+      operationId: PATCH_multi
+      parameters:
+      - name: number-1
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: number-2
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                example:
+                  message: result is 50
+  /div:
+    put:
+      operationId: PUT_div
+      parameters:
+      - name: number1
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+      - name: number2
+        in: query
+        required: true
+        style: form
+        explode: true
+        schema:
+          type: integer
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                example:
+                  message: result is 6
+        500:
+          content:
+            application/json:
+              schema:
+                example:
+                  message: internal server error
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}

@@ -1,0 +1,240 @@
+openapi: 3.0.0
+info:
+  title: Investmentbanking
+  description: this Raml is for assessment API
+  version: 1.0.0
+servers:
+- url: /
+paths:
+  /assessments:
+    get:
+      description: This API will retrieve set of questions answer from salesforce
+        system.
+      operationId: GET_assessments
+      parameters:
+      - name: x-fms-transactionId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          maxLength: 36
+          minLength: 36
+          type: string
+      - name: x-fms-clientId
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      - name: x-fms-clientSecret
+        in: header
+        required: true
+        style: simple
+        explode: false
+        schema:
+          type: string
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                required:
+                - retrieveAssessmnetResponce
+                type: object
+                properties:
+                  retrieveAssessmnetResponce:
+                    type: array
+                    items:
+                      required:
+                      - answer
+                      - question
+                      type: object
+                      properties:
+                        question:
+                          type: string
+                          example: What is investment objective
+                        answer:
+                          type: array
+                          items:
+                            required:
+                            - option
+                            type: object
+                            properties:
+                              option:
+                                type: string
+                                example: option1
+                example:
+                  retrieveAssessmnetResponce:
+                  - question: What Is an Investment Objective
+                    answer:
+                    - option: Option1
+                    - option: Option1
+                    - option: Option1
+                    - option: Option1
+        400:
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - error
+                - eventId
+                - msg
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  code:
+                    type: integer
+                    example: 400
+                  eventId:
+                    type: string
+                  error:
+                    required:
+                    - details
+                    - title
+                    - type
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      title:
+                        type: string
+                      details:
+                        type: string
+                example:
+                  msg: failed operation
+                  code: 400
+                  eventId: dbfhjsdb-hfb-do8ryt-876t7-5ty
+                  error:
+                    type: BAD_REQUEST
+                    title: Invalid Request
+                    details: The input contains invalid data
+        401:
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - error
+                - eventId
+                - msg
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  code:
+                    type: integer
+                  eventId:
+                    type: string
+                  error:
+                    required:
+                    - details
+                    - title
+                    - type
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      title:
+                        type: string
+                      details:
+                        type: string
+                example:
+                  msg: failed operation
+                  code: 401
+                  eventId: dbfhjsdbhfbdo8ryt876t75ty
+                  error:
+                    type: Un_Authorized
+                    title: UnAuthorized
+                    details: The Request is not Authorized
+        404:
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - error
+                - eventId
+                - msg
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  code:
+                    type: integer
+                  eventId:
+                    type: string
+                  error:
+                    required:
+                    - details
+                    - title
+                    - type
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      title:
+                        type: string
+                      details:
+                        type: string
+                example:
+                  msg: failed operation
+                  code: 404
+                  eventId: dbfhjsdbhfbdo8ryt876t75ty
+                  error:
+                    type: NOT_FOUND
+                    title: Resource not found
+                    details: The URI requested is invalid or the resource requested
+                      does not exists
+        500:
+          content:
+            application/json:
+              schema:
+                required:
+                - code
+                - error
+                - eventId
+                - msg
+                type: object
+                properties:
+                  msg:
+                    type: string
+                  code:
+                    type: integer
+                  eventId:
+                    type: string
+                  error:
+                    required:
+                    - details
+                    - title
+                    - type
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      title:
+                        type: string
+                      details:
+                        type: string
+                example:
+                  msg: failed operation
+                  code: 500
+                  eventId: dbfhjsdbhfbdo8ryt876t75ty
+                  error:
+                    type: SERVER_ERROR
+                    title: Internal server error
+                    details: The server encountered an unexpected condition which
+                      prevented it from fulfilling the request
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}
