@@ -1,0 +1,25 @@
+_format_version: "1.1"
+_info:
+ select_tags:
+ - customerapi_oaspec
+services:
+  - name: Customer_API
+    protocol: http
+    host: localhost
+    port: 80
+    path: /api
+    plugins: []
+    routes:
+      - tags:
+          - OAS3_import
+          - OAS3file_customerapi_oaspec.yaml
+        name: Customer_API-Get_Customers
+        methods:
+          - GET
+        paths:
+          - /v1/customers$
+        strip_path: false
+    tags:
+      - OAS3_import
+      - OAS3file_customerapi_oaspec.yaml
+
