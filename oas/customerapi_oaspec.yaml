@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  title: Customer API
+  version: v1
+servers:
+- url: /
+paths:
+  /customers:
+    post:
+      description: This method will Creates customer
+      operationId: POST_customers
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: string
+            example:
+              customerId: 1234
+              firstName: John
+              lastName: Doe
+              phone: +91 987654321
+              email: jhon.doe@gmail.com
+        required: true
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                example:
+                  message: customer details updated
+  /{customerId}:
+    get:
+      description: Return customer information by customerId
+      operationId: GET_customerId
+      responses:
+        200:
+          content:
+            application/json:
+              schema:
+                example:
+                  customerId: 1234
+                  firstName: John
+                  lastName: Doe
+                  phone: +91 987654321
+                  email: jhon.doe@gmail.com
+    parameters:
+    - name: customerId
+      in: path
+      required: true
+      style: simple
+      explode: false
+      schema:
+        type: string
+components:
+  schemas: {}
+  responses: {}
+  parameters: {}
+  examples: {}
+  requestBodies: {}
+  headers: {}
+  securitySchemes: {}
+  links: {}
+  callbacks: {}
