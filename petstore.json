@@ -1,4 +1,3 @@
-{
-    "code": 400,
-    "message": "Input error: unable to convert input to com.fasterxml.jackson.databind.JsonNode"
-}
+[
+    "attribute  is not of type `object`"
+]
