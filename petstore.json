@@ -1,1 +1,4 @@
-{"code":400,"message":"Input error: unable to convert input to com.fasterxml.jackson.databind.JsonNode"}
+{
+    "code": 400,
+    "message": "Input error: unable to convert input to com.fasterxml.jackson.databind.JsonNode"
+}
