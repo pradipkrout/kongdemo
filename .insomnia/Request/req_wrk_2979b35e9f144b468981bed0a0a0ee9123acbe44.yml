@@ -3,7 +3,7 @@ type: Request
 parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee911b034c38
 modified: 1652416305988
 created: 1652360646899
-url: "{{ base_url }}/pet"
+url: "{{ base_url }}/sendMpwData"
 name: Add a new pet to the store
 description: ""
 method: POST

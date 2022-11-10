@@ -1,1049 +1,945 @@
 _id: spc_704373d6184048e09ae6b2f3f778f2a9
 type: ApiSpec
 parentId: wrk_2979b35e9f144b468981bed0a0a0ee91
-modified: 1668101592947
+modified: 1668101642078
 created: 1652360191728
 fileName: Petstore.yaml
-contents: "openapi: 3.0.0
+contents: >-
+  openapi: 3.0.0
 
   info:
-
-  \  description: \"primary service from duck creek to transform json payload
-  to xml\"
-
-  \  version: 1.0.0
-
-  \  title: Duk Creek Primary Service
-
+    description: "primary service from duck creek to transform json payload to xml"
+    version: 1.0.0
+    title: DuckCreek Primary Service
   tags:
-
-  \  - name: primary
-
-  \    description: tag for primary service
-
+    - name: primary
+      description: tag for primary service
   paths:
-
-  \  /sendMpwData:
-
-  \    post:
-
-  \      tags:
-
-  \        - primary
-
-  \      summary: Add a new sendMpwData
-
-  \      description: \"\"
-
-  \      operationId: addPet
-
-  \      requestBody:
-
-  \        $ref: \"#/components/requestBodies/sendMpwData\"
-
-  \      responses:
-
-  \        \"200\":
-
-  \          description: successful operation
-
-  \          content:
-
-  \            application/json:
-
-  \              schema:
-
-  \                type: array
-
-  \                items:
-
-  \                  $ref: \"#/components/schemas/sendMpwDataResponse\"
-
-  \        \"400\":
-
-  \          description: Invalid status value
-
-  \  /sendNewMpwEpwData:
-
-  \    post:
-
-  \      tags:
-
-  \        - primary
-
-  \      summary: Add a new sendMpwData\ 
-
-  \      description: \"\"
-
-  \      requestBody:
-
-  \        $ref: \"#/components/requestBodies/sendMpwData\"
-
-  \      responses:
-
-  \        \"200\":
-
-  \          description: successful operation
-
-  \          content:
-
-  \            application/json:
-
-  \              schema:
-
-  \                type: array
-
-  \                items:
-
-  \                  $ref: \"#/components/schemas/sendMpwDataResponse\"
-
-  \        \"400\":
-
-  \          description: Invalid status value
-
+    /sendMpwData:
+      post:
+        tags:
+          - primary
+        summary: Add a new sendMpwData
+        description: ""
+        requestBody:
+          $ref: "#/components/requestBodies/sendMpwDataRequest"
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/sendMpwDataResponse"
+          "400":
+            description: Invalid status value
+    /sendNewMpwEpwData:
+      post:
+        tags:
+          - primary
+        summary: Add a new sendMpwData 
+        description: ""
+        requestBody:
+          $ref: "#/components/requestBodies/sendNewMpwEpwDataRequest"
+        responses:
+          "200":
+            description: successful operation
+            content:
+              application/json:
+                schema:
+                  type: array
+                  items:
+                    $ref: "#/components/schemas/sendNewMpwEpwDataResponse"
+          "400":
+            description: Invalid status value
   servers:
-
-  \  - url: https://test-api.cfins.io/duckcreek/primary
-
+    - url: https://test-api.cfins.io/duckcreek/primary
   components:
-
-  \  requestBodies:
-
-  \    sendMpwData:
-
-  \      content:
-
-  \        application/json:
-
-  \          schema:
-
-  \            $ref: \"#/components/schemas/sendMpwData\"
-
-  \        application/xml:
-
-  \          schema:
-
-  \            $ref: \"#/components/schemas/sendMpwData\"
-
-  \      description: sendMpwData object that needs to be added to the store
-
-  \      required: true
-
-  \  schemas:
-
-  \    sendMpwDataResponse:
-
-  \      type: object
-
-  \      properties:
-
-  \        status:
-
-  \          type: string
-
-  \        formCount:
-
-  \          type: string
-
-  \        quoteId:
-
-  \          type: string
-
-  \        policyNumber:
-
-  \          type: string
-
-  \        dcLink:
-
-  \          type: string
-
-  \        qcReport:
-
-  \          type: string
-
-  \      required:
-
-  \        - status
-
-  \        - formCount
-
-  \        - quoteId
-
-  \        - policyNumber
-
-  \        - dcLink
-
-  \        - qcReport
-
-  \    sendMpwData:
-
-  \     type: object
-
-  \     properties:
-
-  \       userId:
-
-  \        type: string
-
-  \       data:
-
-  \        type: object
-
-  \        properties:
-
-  \         Policy:
-
-  \           type: object
-
-  \           properties:
-
-  \             ProductNumber:
-
-  \               type: integer
-
-  \             PolicyNumber:
-
-  \               type: string
-
-  \             NewRenewal:
-
-  \               type: string
-
-  \             ExpiringPolicyNumber:
-
-  \               type: string
-
-  \             EffectiveDate:
-
-  \               type: string
-
-  \             ExpirationDate:
-
-  \               type: string
-
-  \             ProducerCode:
-
-  \               type: integer
-
-  \             ProducerContact:
-
-  \               type: string
-
-  \             AccountExecutive:
-
-  \               type: string
-
-  \             Team:
-
-  \               type: string
-
-  \             ColoradoStampIndicator:
-
-  \               type: string
-
-  \             ClassCode:
-
-  \               type: string
-
-  \             ConstructionSegment:
-
-  \               type: string
-
-  \             Reinsurance:
-
-  \               type: string
-
-  \             PrimaryRatingState:
-
-  \               type: string
-
-  \             Term:
-
-  \               type: integer
-
-  \             CoverageForm:
-
-  \               type: string
-
-  \             ExpPolicyTerm:
-
-  \               type: string
-
-  \             ExpPolicyPrefix:
-
-  \               type: string
-
-  \           required:
-
-  \             - ProductNumber
-
-  \             - PolicyNumber
-
-  \             - NewRenewal
-
-  \             - ExpiringPolicyNumber
-
-  \             - EffectiveDate
-
-  \             - ExpirationDate
-
-  \             - ProducerCode
-
-  \             - ProducerContact
-
-  \             - AccountExecutive
-
-  \             - Team
-
-  \             - ColoradoStampIndicator
-
-  \             - ClassCode
-
-  \             - ConstructionSegment
-
-  \             - Reinsurance
-
-  \             - PrimaryRatingState
-
-  \             - Term
-
-  \             - CoverageForm
-
-  \             - ExpPolicyTerm
-
-  \             - ExpPolicyPrefix
-
-  \         Insured:
-
-  \           type: object
-
-  \           properties:
-
-  \             InsuredName:
-
-  \               type: string
-
-  \             MailingAddress:
-
-  \               type: object
-
-  \               properties:
-
-  \                 Address1:
-
-  \                   type: string
-
-  \                 Address2:
-
-  \                   type: string
-
-  \                 City:
-
-  \                   type: string
-
-  \                 State:
-
-  \                   type: string
-
-  \                 ZipCode:
-
-  \                   type: string
-
-  \               required:
-
-  \                 - Address1
-
-  \                 - Address2
-
-  \                 - City
-
-  \                 - State
-
-  \                 - ZipCode
-
-  \             FormOfBusiness:
-
-  \               type: string
-
-  \             BusinessEntityType:
-
-  \               type: string
-
-  \           required:
-
-  \             - InsuredName
-
-  \             - MailingAddress
-
-  \             - FormOfBusiness
-
-  \             - BusinessEntityType
-
-  \         WritingCompany:
-
-  \           type: object
-
-  \           properties:
-
-  \             WritingCompanyName:
-
-  \               type: string
-
-  \           required:
-
-  \             - WritingCompanyName
-
-  \         Limits:
-
-  \           type: object
-
-  \           properties:
-
-  \             Occurrence:
-
-  \               type: integer
-
-  \             PIAI:
-
-  \               type: integer
-
-  \             GeneralAggregate:
-
-  \               type: integer
-
-  \             PCOAggregate:
-
-  \               type: integer
-
-  \             FireDamage:
-
-  \               type: integer
-
-  \             MedPay:
-
-  \               type: integer
-
-  \             EBLLimit:
-
-  \               type: integer
-
-  \             EBLAggregate:
-
-  \               type: integer
-
-  \             ContractorsPollutionLiability:
-
-  \               type: integer
-
-  \             LiquorLiabilityLimit:
-
-  \               type: integer
-
-  \             LiquorLiabilityAggregate:
-
-  \               type: integer
-
-  \             ProfessionalEachClaim:
-
-  \               type: integer
-
-  \             ProfessionalLimit:
-
-  \               type: integer
-
-  \             ProfessionalAggregate:
-
-  \               type: integer
-
-  \             DesignatedProjectGeneralAggregate:
-
-  \               type: string
-
-  \             DesignatedLocationGeneralAggregate:
-
-  \               type: string
-
-  \             DesignatedEventGeneralAggregate:
-
-  \               type: string
-
-  \             TotalPolicyAggregate:
-
-  \               type: integer
-
-  \             LossOfElectronicDataLimit:
-
-  \               type: integer
-
-  \             LossOfElectronicDataAggregate:
-
-  \               type: integer
-
-  \             AbuseMisconductLimit:
-
-  \               type: integer
-
-  \             AbuseMisconductAggregate:
-
-  \               type: integer
-
-  \             AssaultBatteryLimit:
-
-  \               type: integer
-
-  \             AssaultBatteryAggregate:
-
-  \               type: integer
-
-  \           required:
-
-  \             - Occurrence
-
-  \             - PIAI
-
-  \             - GeneralAggregate
-
-  \             - PCOAggregate
-
-  \             - FireDamage
-
-  \             - MedPay
-
-  \             - EBLLimit
-
-  \             - EBLAggregate
-
-  \             - ContractorsPollutionLiability
-
-  \             - LiquorLiabilityLimit
-
-  \             - LiquorLiabilityAggregate
-
-  \             - ProfessionalEachClaim
-
-  \             - ProfessionalLimit
-
-  \             - ProfessionalAggregate
-
-  \             - DesignatedProjectGeneralAggregate
-
-  \             - DesignatedLocationGeneralAggregate
-
-  \             - DesignatedEventGeneralAggregate
-
-  \             - TotalPolicyAggregate
-
-  \             - LossOfElectronicDataLimit
-
-  \             - LossOfElectronicDataAggregate
-
-  \             - AbuseMisconductLimit
-
-  \             - AbuseMisconductAggregate
-
-  \             - AssaultBatteryLimit
-
-  \             - AssaultBatteryAggregate
-
-  \         PremiumFeesAdditionalTerms:
-
-  \           type: object
-
-  \           properties:
-
-  \             DepositPremium:
-
-  \               type: integer
-
-  \             CommissionPercent:
-
-  \               type: number
-
-  \             InspectionFee:
-
-  \               type: integer
-
-  \             ProcessingFee:
-
-  \               type: integer
-
-  \             Auditable:
-
-  \               type: string
-
-  \             AuditPeriod:
-
-  \               type: string
-
-  \             MinimumEarnedInceptionPercent:
-
-  \               type: number
-
-  \             FullyEarnedByDate:
-
-  \               type: string
-
-  \             MinimumEarnedAuditPercent:
-
-  \               type: integer
-
-  \             DefenseCosts:
-
-  \               type: string
-
-  \             TriaCoverage:
-
-  \               type: string
-
-  \             TriaPremium:
-
-  \               type: integer
-
-  \             TriaPremiumBehavior:
-
-  \               type: string
-
-  \             CoverageBasis:
-
-  \               type: string
-
-  \             RetroactiveDate:
-
-  \               type: string
-
-  \           required:
-
-  \            - DepositPremium
-
-  \            - CommissionPercent
-
-  \            - InspectionFee
-
-  \            - ProcessingFee
-
-  \            - Auditable
-
-  \            - AuditPeriod
-
-  \            - MinimumEarnedInceptionPercent
-
-  \            - FullyEarnedByDate
-
-  \            - MinimumEarnedAuditPercent
-
-  \            - DefenseCosts
-
-  \            - TriaCoverage
-
-  \            - TriaPremium
-
-  \            - TriaPremiumBehavior
-
-  \            - CoverageBasis
-
-  \            - RetroactiveDate
-
-  \         OCP:
-
-  \           type: object
-
-  \           properties:
-
-  \             LocationOfCoveredOperations:
-
-  \               type: string
-
-  \             DesignatedContractName:
-
-  \               type: string
-
-  \             DesignatedContractMailingAddress:
-
-  \               type: string
-
-  \             DesignatedContractCity:
-
-  \               type: string
-
-  \             DesignatedContractState:
-
-  \               type: string
-
-  \             DesignatedContractZipCode:
-
-  \               type: string
-
-  \           required:
-
-  \             - LocationOfCoveredOperations
-
-  \             - DesignatedContractName
-
-  \             - DesignatedContractMailingAddress
-
-  \             - DesignatedContractCity
-
-  \             - DesignatedContractState
-
-  \             - DesignatedContractZipCode
-
-  \         Locations:
-
-  \           type: object
-
-  \           properties:
-
-  \             OnFile:
-
-  \               type: string
-
-  \             Addresses:
-
-  \               type: array
-
-  \               items:
-
-  \                 type: object
-
-  \                 properties:
-
-  \                   IsPrimaryLocation:
-
-  \                     type: integer
-
-  \                   Number:
-
-  \                     type: integer
-
-  \                   StreetAddress1:
-
-  \                     type: string
-
-  \                   StreetAddress2:
-
-  \                     type: string
-
-  \                   City:
-
-  \                     type: string
-
-  \                   State:
-
-  \                     type: string
-
-  \                   Zip:
-
-  \                     type: string
-
-  \                 required:
-
-  \                   - IsPrimaryLocation
-
-  \                   - Number
-
-  \                   - StreetAddress1
-
-  \                   - StreetAddress2
-
-  \                   - City
-
-  \                   - State
-
-  \                   - Zip
-
-  \           required:
-
-  \            - OnFile
-
-  \            - Addresses
-
-  \         Rates:
-
-  \           type: array
-
-  \           items:
-
-  \              type: object
-
-  \           properties:
-
-  \             Type:
-
-  \               type: string
-
-  \             ExposureBasis:
-
-  \               type: string
-
-  \             ExposureAmount:
-
-  \               type: integer
-
-  \             Note:
-
-  \               type: string
-
-  \             RatePremises:
-
-  \               type: number
-
-  \             RatePCO:
-
-  \               type: number
-
-  \             RateTotal:
-
-  \               type: integer
-
-  \             PremiumPremises:
-
-  \               type: number
-
-  \             PremiumPCO:
-
-  \               type: number
-
-  \             PremiumTotal:
-
-  \               type: integer
-
-  \             PremiumBehavior:
-
-  \               type: string
-
-  \             ClassCode:
-
-  \               type: string
-
-  \             Auditable:
-
-  \               type: string
-
-  \             TypePremisesPCO:
-
-  \               type: string
-
-  \             CoverageApplies:
-
-  \               type: string
-
-  \           required:
-
-  \             - Type
-
-  \             - ExposureBasis
-
-  \             - ExposureAmount
-
-  \             - Note
-
-  \             - RatePremises
-
-  \             - RatePCO
-
-  \             - RateTotal
-
-  \             - PremiumPremises
-
-  \             - PremiumPCO
-
-  \             - PremiumTotal
-
-  \             - PremiumBehavior
-
-  \             - ClassCode
-
-  \             - Auditable
-
-  \             - TypePremisesPCO
-
-  \             - CoverageApplies
-
-  \         Retention:
-
-  \           type: object
-
-  \           properties:
-
-  \             RetentionType:
-
-  \               type: string
-
-  \             AggregateDeductibleApplicable:
-
-  \               type: string
-
-  \             AggregateDeductibleAmount:
-
-  \               type: integer
-
-  \             DeductibleLAE:
-
-  \               type: string
-
-  \             DeductibleDefense:
-
-  \               type: string
-
-  \             DeductibleType:
-
-  \               type: string
-
-  \             DeductibleBasis:
-
-  \               type: string
-
-  \             DeductibleAmount:
-
-  \               type: integer
-
-  \             PIAIDeductibleApplicable:
-
-  \               type: string
-
-  \             PIAIDeductibleAmount:
-
-  \               type: integer
-
-  \             LiquorDeductibleApplicable:
-
-  \               type: string
-
-  \             LiquorDeductibleAmount:
-
-  \               type: integer
-
-  \             MedicalPaymentsDeductibleApplicable:
-
-  \               type: string
-
-  \             MedicalPaymentsDeductibleAmount:
-
-  \               type: integer
-
-  \             MedicalPaymentsDeductibleBasis:
-
-  \               type: string
-
-  \             ContractorsPollutionDeductibleApplicable:
-
-  \               type: string
-
-  \             ContractorsPollutionDeductibleAmount:
-
-  \               type: integer
-
-  \             ContractorsPollutionDeductibleBasis:
-
-  \               type: string
-
-  \             ProfessionalDeductible:
-
-  \               type: string
-
-  \             ProfessionalDedAmount:
-
-  \               type: integer
-
-  \             ProfessionalDedBasis:
-
-  \               type: string
-
-  \           required:
-
-  \             - RetentionType
-
-  \             - AggregateDeductibleApplicable
-
-  \             - AggregateDeductibleAmount
-
-  \             - DeductibleLAE
-
-  \             - DeductibleDefense
-
-  \             - DeductibleType
-
-  \             - DeductibleBasis
-
-  \             - DeductibleAmount
-
-  \             - PIAIDeductibleApplicable
-
-  \             - PIAIDeductibleAmount
-
-  \             - LiquorDeductibleApplicable
-
-  \             - LiquorDeductibleAmount
-
-  \             - MedicalPaymentsDeductibleApplicable
-
-  \             - MedicalPaymentsDeductibleAmount
-
-  \             - MedicalPaymentsDeductibleBasis
-
-  \             - ContractorsPollutionDeductibleApplicable
-
-  \             - ContractorsPollutionDeductibleAmount
-
-  \             - ContractorsPollutionDeductibleBasis
-
-  \             - ProfessionalDeductible
-
-  \             - ProfessionalDedAmount
-
-  \             - ProfessionalDedBasis\ 
-
-  \         Forms:
-
-  \           type: array
-
-  \           items:
-
-  \             type: object
-
-  \             properties:
-
-  \              Form:
-
-  \                type: string
-
-  \              FillIns:
-
-  \                type: string
-
-  \             required:
-
-  \               - Form
-
-  \               - FillIns
-
-  \        required:
-
-  \          - Policy
-
-  \          - Insured
-
-  \          - WritingCompany
-
-  \          - Limits
-
-  \          - PremiumFeesAdditionalTerms
-
-  \          - OCP
-
-  \          - Locations
-
-  \          - Rates
-
-  \          - Retention
-
-  \          - Forms
-
-  \     required:
-
-  \       - userId
-
-  \       - data
-
-  \t   "
+    requestBodies:
+      sendMpwDataRequest:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/sendMpwDataRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/sendMpwDataRequest"
+        description: sendMpwData object that needs to be added to the store
+        required: true
+      sendNewMpwEpwDataRequest:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/sendNewMpwEpwDataRequest"
+          application/xml:
+            schema:
+              $ref: "#/components/schemas/sendNewMpwEpwDataResponse"
+        description: sendMpwData object that needs to be added to the store
+        required: true
+    schemas:
+      sendMpwDataResponse:
+        type: object
+        properties:
+          status:
+            type: string
+          formCount:
+            type: string
+          quoteId:
+            type: string
+          policyNumber:
+            type: string
+          dcLink:
+            type: string
+          qcReport:
+            type: string
+        required:
+          - status
+          - formCount
+          - quoteId
+          - policyNumber
+          - dcLink
+          - qcReport
+      sendMpwDataRequest:
+       type: object
+       properties:
+         userId:
+          type: string
+         data:
+          type: object
+          properties:
+           Policy:
+             type: object
+             properties:
+               ProductNumber:
+                 type: integer
+               PolicyNumber:
+                 type: string
+               NewRenewal:
+                 type: string
+               ExpiringPolicyNumber:
+                 type: string
+               EffectiveDate:
+                 type: string
+               ExpirationDate:
+                 type: string
+               ProducerCode:
+                 type: integer
+               ProducerContact:
+                 type: string
+               AccountExecutive:
+                 type: string
+               Team:
+                 type: string
+               ColoradoStampIndicator:
+                 type: string
+               ClassCode:
+                 type: string
+               ConstructionSegment:
+                 type: string
+               Reinsurance:
+                 type: string
+               PrimaryRatingState:
+                 type: string
+               Term:
+                 type: integer
+               CoverageForm:
+                 type: string
+               ExpPolicyTerm:
+                 type: string
+               ExpPolicyPrefix:
+                 type: string
+             required:
+               - ProductNumber
+               - PolicyNumber
+               - NewRenewal
+               - ExpiringPolicyNumber
+               - EffectiveDate
+               - ExpirationDate
+               - ProducerCode
+               - ProducerContact
+               - AccountExecutive
+               - Team
+               - ColoradoStampIndicator
+               - ClassCode
+               - ConstructionSegment
+               - Reinsurance
+               - PrimaryRatingState
+               - Term
+               - CoverageForm
+               - ExpPolicyTerm
+               - ExpPolicyPrefix
+           Insured:
+             type: object
+             properties:
+               InsuredName:
+                 type: string
+               MailingAddress:
+                 type: object
+                 properties:
+                   Address1:
+                     type: string
+                   Address2:
+                     type: string
+                   City:
+                     type: string
+                   State:
+                     type: string
+                   ZipCode:
+                     type: string
+                 required:
+                   - Address1
+                   - Address2
+                   - City
+                   - State
+                   - ZipCode
+               FormOfBusiness:
+                 type: string
+               BusinessEntityType:
+                 type: string
+             required:
+               - InsuredName
+               - MailingAddress
+               - FormOfBusiness
+               - BusinessEntityType
+           WritingCompany:
+             type: object
+             properties:
+               WritingCompanyName:
+                 type: string
+             required:
+               - WritingCompanyName
+           Limits:
+             type: object
+             properties:
+               Occurrence:
+                 type: integer
+               PIAI:
+                 type: integer
+               GeneralAggregate:
+                 type: integer
+               PCOAggregate:
+                 type: integer
+               FireDamage:
+                 type: integer
+               MedPay:
+                 type: integer
+               EBLLimit:
+                 type: integer
+               EBLAggregate:
+                 type: integer
+               ContractorsPollutionLiability:
+                 type: integer
+               LiquorLiabilityLimit:
+                 type: integer
+               LiquorLiabilityAggregate:
+                 type: integer
+               ProfessionalEachClaim:
+                 type: integer
+               ProfessionalLimit:
+                 type: integer
+               ProfessionalAggregate:
+                 type: integer
+               DesignatedProjectGeneralAggregate:
+                 type: string
+               DesignatedLocationGeneralAggregate:
+                 type: string
+               DesignatedEventGeneralAggregate:
+                 type: string
+               TotalPolicyAggregate:
+                 type: integer
+               LossOfElectronicDataLimit:
+                 type: integer
+               LossOfElectronicDataAggregate:
+                 type: integer
+               AbuseMisconductLimit:
+                 type: integer
+               AbuseMisconductAggregate:
+                 type: integer
+               AssaultBatteryLimit:
+                 type: integer
+               AssaultBatteryAggregate:
+                 type: integer
+             required:
+               - Occurrence
+               - PIAI
+               - GeneralAggregate
+               - PCOAggregate
+               - FireDamage
+               - MedPay
+               - EBLLimit
+               - EBLAggregate
+               - ContractorsPollutionLiability
+               - LiquorLiabilityLimit
+               - LiquorLiabilityAggregate
+               - ProfessionalEachClaim
+               - ProfessionalLimit
+               - ProfessionalAggregate
+               - DesignatedProjectGeneralAggregate
+               - DesignatedLocationGeneralAggregate
+               - DesignatedEventGeneralAggregate
+               - TotalPolicyAggregate
+               - LossOfElectronicDataLimit
+               - LossOfElectronicDataAggregate
+               - AbuseMisconductLimit
+               - AbuseMisconductAggregate
+               - AssaultBatteryLimit
+               - AssaultBatteryAggregate
+           PremiumFeesAdditionalTerms:
+             type: object
+             properties:
+               DepositPremium:
+                 type: integer
+               CommissionPercent:
+                 type: number
+               InspectionFee:
+                 type: integer
+               ProcessingFee:
+                 type: integer
+               Auditable:
+                 type: string
+               AuditPeriod:
+                 type: string
+               MinimumEarnedInceptionPercent:
+                 type: number
+               FullyEarnedByDate:
+                 type: string
+               MinimumEarnedAuditPercent:
+                 type: integer
+               DefenseCosts:
+                 type: string
+               TriaCoverage:
+                 type: string
+               TriaPremium:
+                 type: integer
+               TriaPremiumBehavior:
+                 type: string
+               CoverageBasis:
+                 type: string
+               RetroactiveDate:
+                 type: string
+             required:
+              - DepositPremium
+              - CommissionPercent
+              - InspectionFee
+              - ProcessingFee
+              - Auditable
+              - AuditPeriod
+              - MinimumEarnedInceptionPercent
+              - FullyEarnedByDate
+              - MinimumEarnedAuditPercent
+              - DefenseCosts
+              - TriaCoverage
+              - TriaPremium
+              - TriaPremiumBehavior
+              - CoverageBasis
+              - RetroactiveDate
+           OCP:
+             type: object
+             properties:
+               LocationOfCoveredOperations:
+                 type: string
+               DesignatedContractName:
+                 type: string
+               DesignatedContractMailingAddress:
+                 type: string
+               DesignatedContractCity:
+                 type: string
+               DesignatedContractState:
+                 type: string
+               DesignatedContractZipCode:
+                 type: string
+             required:
+               - LocationOfCoveredOperations
+               - DesignatedContractName
+               - DesignatedContractMailingAddress
+               - DesignatedContractCity
+               - DesignatedContractState
+               - DesignatedContractZipCode
+           Locations:
+             type: object
+             properties:
+               OnFile:
+                 type: string
+               Addresses:
+                 type: array
+                 items:
+                   type: object
+                   properties:
+                     IsPrimaryLocation:
+                       type: integer
+                     Number:
+                       type: integer
+                     StreetAddress1:
+                       type: string
+                     StreetAddress2:
+                       type: string
+                     City:
+                       type: string
+                     State:
+                       type: string
+                     Zip:
+                       type: string
+                   required:
+                     - IsPrimaryLocation
+                     - Number
+                     - StreetAddress1
+                     - StreetAddress2
+                     - City
+                     - State
+                     - Zip
+             required:
+              - OnFile
+              - Addresses
+           Rates:
+             type: array
+             items:
+                type: object
+             properties:
+               Type:
+                 type: string
+               ExposureBasis:
+                 type: string
+               ExposureAmount:
+                 type: integer
+               Note:
+                 type: string
+               RatePremises:
+                 type: number
+               RatePCO:
+                 type: number
+               RateTotal:
+                 type: integer
+               PremiumPremises:
+                 type: number
+               PremiumPCO:
+                 type: number
+               PremiumTotal:
+                 type: integer
+               PremiumBehavior:
+                 type: string
+               ClassCode:
+                 type: string
+               Auditable:
+                 type: string
+               TypePremisesPCO:
+                 type: string
+               CoverageApplies:
+                 type: string
+             required:
+               - Type
+               - ExposureBasis
+               - ExposureAmount
+               - Note
+               - RatePremises
+               - RatePCO
+               - RateTotal
+               - PremiumPremises
+               - PremiumPCO
+               - PremiumTotal
+               - PremiumBehavior
+               - ClassCode
+               - Auditable
+               - TypePremisesPCO
+               - CoverageApplies
+           Retention:
+             type: object
+             properties:
+               RetentionType:
+                 type: string
+               AggregateDeductibleApplicable:
+                 type: string
+               AggregateDeductibleAmount:
+                 type: integer
+               DeductibleLAE:
+                 type: string
+               DeductibleDefense:
+                 type: string
+               DeductibleType:
+                 type: string
+               DeductibleBasis:
+                 type: string
+               DeductibleAmount:
+                 type: integer
+               PIAIDeductibleApplicable:
+                 type: string
+               PIAIDeductibleAmount:
+                 type: integer
+               LiquorDeductibleApplicable:
+                 type: string
+               LiquorDeductibleAmount:
+                 type: integer
+               MedicalPaymentsDeductibleApplicable:
+                 type: string
+               MedicalPaymentsDeductibleAmount:
+                 type: integer
+               MedicalPaymentsDeductibleBasis:
+                 type: string
+               ContractorsPollutionDeductibleApplicable:
+                 type: string
+               ContractorsPollutionDeductibleAmount:
+                 type: integer
+               ContractorsPollutionDeductibleBasis:
+                 type: string
+               ProfessionalDeductible:
+                 type: string
+               ProfessionalDedAmount:
+                 type: integer
+               ProfessionalDedBasis:
+                 type: string
+             required:
+               - RetentionType
+               - AggregateDeductibleApplicable
+               - AggregateDeductibleAmount
+               - DeductibleLAE
+               - DeductibleDefense
+               - DeductibleType
+               - DeductibleBasis
+               - DeductibleAmount
+               - PIAIDeductibleApplicable
+               - PIAIDeductibleAmount
+               - LiquorDeductibleApplicable
+               - LiquorDeductibleAmount
+               - MedicalPaymentsDeductibleApplicable
+               - MedicalPaymentsDeductibleAmount
+               - MedicalPaymentsDeductibleBasis
+               - ContractorsPollutionDeductibleApplicable
+               - ContractorsPollutionDeductibleAmount
+               - ContractorsPollutionDeductibleBasis
+               - ProfessionalDeductible
+               - ProfessionalDedAmount
+               - ProfessionalDedBasis 
+           Forms:
+             type: array
+             items:
+               type: object
+               properties:
+                Form:
+                  type: string
+                FillIns:
+                  type: string
+               required:
+                 - Form
+                 - FillIns
+          required:
+            - Policy
+            - Insured
+            - WritingCompany
+            - Limits
+            - PremiumFeesAdditionalTerms
+            - OCP
+            - Locations
+            - Rates
+            - Retention
+            - Forms
+       required:
+         - userId
+         - data
+      sendNewMpwEpwDataRequest:
+        type: object
+        properties:
+          userId:
+            type: string
+          data:
+            type: object
+            properties:
+              riskState:
+                type: string
+              productNumber:
+                type: integer
+              stateStamp:
+                type: string
+              policy:
+                type: object      
+                properties:
+                  newPolicyNumber:
+                    type: string
+                  expPolicyNumber:
+                    type: string
+                  effectiveDate:
+                    type: string
+                  expirationDate:
+                    type: string
+                  coverageForm:
+                    type: string
+                  overPCOOnly:
+                    type: string
+                  OverAutoOnly:
+                    type: string
+                  NewRenewal:      
+                    type: string
+                  Team:
+                    type: string
+                  FormOfBusiness:
+                    type: string
+                  Term:
+                    type: integer
+                  TotalLayerLimit:
+                    type: integer
+                  product:
+                    type: string
+                required:
+                  - newPolicyNumber
+                  - expPolicyNumber
+                  - effectiveDate
+                  - expirationDate
+                  - coverageForm
+                  - overPCOOnly
+                  - OverAutoOnly
+                  - NewRenewal
+                  - Team
+                  - FormOfBusiness
+                  - Term
+                  - TotalLayerLimit
+                  - product
+              physicalAddress:
+                type: object
+                properties:
+                  StreetAddress1:
+                    type: string
+                  StreetAddress2:
+                    type: string
+                  City:
+                    type: string
+                  State:
+                    type: string
+                  Zip:
+                    type: string
+                required:
+                  - StreetAddress1
+                  - StreetAddress2
+                  - City
+                  - State
+                  - Zip
+              writingCompany:
+                type: object
+                properties:
+                  name:      
+                    type: string
+                  underwriter:
+                    type: object
+                  logo:
+                    type: string
+                required:
+                  - name
+                  - underwriter
+                  - logo
+              insured:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  id:
+                    type: integer
+                  physicalState:
+                    type: string
+                  address:
+                    type: object
+                    properties:
+                      streetAddress1:
+                        type: string
+                      streetAddress2:
+                        type: string
+                      city:
+                        type: string
+                      state:
+                        type: string
+                      zip:
+                        type: string
+                    required:
+                      - streetAddress1
+                      - streetAddress2
+                      - city
+                      - state
+                      - zip
+                required:
+                  - name
+                  - id
+                  - physicalState
+                  - address
+              indication:
+                type: object
+                properties:
+                  limits:
+                    type: array
+                    items:
+                        type: object
+                        properties:
+                          limitCounter:
+                            type: integer
+                          limitType:
+                            type: string
+                          limitAmount:
+                            type: string
+                        required:
+                          - limitCounter
+                          - limitType
+                          - limitAmount
+                  premium:
+                    type: object
+                    properties:
+                      riskPremium:
+                        type: integer
+                      triaPremium:
+                        type: integer
+                      triaAccept:
+                        type: string
+                      totalPremiumFees:
+                        type: integer
+                    required:
+                      - riskPremium
+                      - triaPremium
+                      - triaAccept
+                      - totalPremiumFees
+                  additionalCharges:
+                    type: object
+                    properties:
+                      insurerProcessingFees:
+                        type: integer
+                      inspectionFee:
+                        type: integer
+                      IsCFIBI:
+                        type: integer
+                      CFIBIFilingFeeAmount:
+                        type: integer
+                      SLTax:
+                        type: string
+                      SLTaxPercent:
+                        type: integer
+                      SLTaxAmount:
+                        type: integer
+                      SLFee:
+                        type: string
+                      SLFeePercent:
+                        type: integer
+                      SLFeeAmount:
+                        type: integer
+                      SLSurcharge:
+                        type: string
+                      SLSurchargePercent:
+                        type: integer
+                      SLSurchargeAmount:
+                        type: integer
+                      SLMiscCharges:
+                        type: string
+                      SLMiscChargesPercent:
+                        type: integer
+                      SLMiscChargesAmount:
+                        type: integer
+                    required:
+                      - insurerProcessingFees
+                      - inspectionFee
+                      - IsCFIBI
+                      - CFIBIFilingFeeAmount
+                      - SLTax
+                      - SLTaxPercent
+                      - SLTaxAmount
+                      - SLFee
+                      - SLFeePercent
+                      - SLFeeAmount
+                      - SLSurcharge
+                      - SLSurchargePercent
+                      - SLSurchargeAmount
+                      - SLMiscCharges
+                      - SLMiscChargesPercent
+                      - SLMiscChargesAmount
+                  additionalTerms:
+                    type: object
+                    properties:
+                      premiumBasis:
+                        type: string
+                      minEarnedAtInception:
+                        type: number
+                      commission:
+                        type: number
+                      auditPeriod:
+                        type: string
+                      policyDeductible:
+                        type: string
+                      FullyEarnedByDate:
+                        type: string
+                      minEarnedAtAudit:
+                        type: integer
+                    required:
+                      - premiumBasis
+                      - minEarnedAtInception
+                      - commission
+                      - auditPeriod
+                      - policyDeductible
+                      - FullyEarnedByDate
+                      - minEarnedAtAudit
+                required:
+                  - limits
+                  - premium
+                  - additionalCharges
+                  - additionalTerms
+              forms:
+                type: array
+                items:
+                    type: object
+                    properties:
+                      formID:
+                        type: string
+                      formNumber:
+                        type: string
+                      fillIns:
+                        type: string
+                    required:
+                      - formID
+                      - formNumber
+                      - fillIns            
+              attachmentPoints:
+                type: object
+                properties:
+                   generalLiability:
+                     type: integer
+                   productsCompletedOps:
+                     type: integer
+                   automobileLiability:
+                     type: integer
+                   employersLiability:
+                     type: integer
+                required:
+                  - generalLiability
+                  - productsCompletedOps
+                  - automobileLiability
+                  - employersLiability
+              scheduleOfUnderlying:
+                type: array
+                items:
+                    type: object
+                    properties:
+                      underlyingNumber:
+                        type: integer
+                      underlyingCoverage:
+                        type: string
+                      insuranceCompany:
+                        type: string
+                      policyNumber:
+                        type: string
+                      effectiveDate:
+                        type: string
+                      expirationDate:
+                        type: string
+                      type:
+                        type: string
+                      layer:
+                        type: string
+                      controlling:
+                        type: string
+                      coverageTrigger:
+                        type: string
+                      defenseCosts:
+                        type: string
+                      retroDate:
+                        type: string
+                      premOpsPremium:
+                        type: integer
+                      prodCompPremium:
+                        type: integer
+                      totalPremium:
+                        type: integer
+                      note:
+                        type: string
+                      limits:
+                        type: array
+                        items:
+                            type: object
+                            properties:
+                              underlyingNumber:
+                                type: integer
+                              name:
+                                type: string
+                              amount:
+                                type: string
+                              note:
+                                type: string
+                            required:
+                              - underlyingNumber
+                              - name
+                              - amount
+                              - note
+                    required:
+                      - underlyingNumber
+                      - underlyingCoverage
+                      - insuranceCompany
+                      - policyNumber
+                      - effectiveDate
+                      - expirationDate
+                      - type
+                      - layer
+                      - controlling
+                      - coverageTrigger
+                      - defenseCosts
+                      - retroDate
+                      - premOpsPremium
+                      - prodCompPremium
+                      - totalPremium
+                      - note
+                      - limits
+              ratesCharges:
+                type: array
+                items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      exposureBasis:
+                        type: string
+                      exposure:
+                        type: string
+                      rate:
+                        type: string
+                      premium:
+                        type: string
+                      description:
+                        type: string
+                      classCode:
+                        type: string
+                    required:
+                      - type
+                      - exposureBasis
+                      - exposure
+                      - rate
+                      - premium
+                      - description
+                      - classCode
+            required:
+              - riskState
+              - productNumber
+              - stateStamp
+              - policy
+              - physicalAddress
+              - writingCompany
+              - insured
+              - indication      
+              - forms
+              - attachmentPoints
+              - scheduleOfUnderlying
+              - ratesCharges
+        required:
+          - userId
+          - data
+      sendNewMpwEpwDataResponse:
+        type: object
+        properties:
+          status:
+            type: string
+          formCount:
+            type: integer
+          quoteId:
+            type: string
+          policyNumber:
+            type: string
+          dcLink:
+            type: string
+          qcReport:
+            type: string
+        required:
+          - status
+          - formCount
+          - quoteId
+          - policyNumber
+          - dcLink
+          - qcReport
 contentType: yaml
