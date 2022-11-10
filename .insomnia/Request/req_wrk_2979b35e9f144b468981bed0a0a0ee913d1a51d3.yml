@@ -14,7 +14,13 @@ headers:
     disabled: false
     value: "{{ apiKey }}"
     id: pair_703027ae214d44d2b76e20f90ac41db6
-authentication: {}
+authentication:
+  clientId: "{{ oauth2ClientId }}"
+  grantType: implicit
+  scope: write:pets read:pets
+  type: oauth2
+  redirectUrl: "{{ oauth2RedirectUrl }}"
+  authorizationUrl: https://petstore3.swagger.io/oauth/authorize
 metaSortKey: -1652360646872
 isPrivate: false
 settingStoreCookies: true

@@ -9,7 +9,13 @@ description: ""
 method: POST
 body:
   mimeType: application/x-www-form-urlencoded
-parameters: []
+parameters:
+  - name: name
+    disabled: true
+    value: string
+  - name: status
+    disabled: true
+    value: string
 headers: []
 authentication:
   clientId: "{{ oauth2ClientId }}"

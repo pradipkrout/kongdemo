@@ -3,7 +3,7 @@ type: Request
 parentId: fld_wrk_2979b35e9f144b468981bed0a0a0ee9112dea96f
 modified: 1657783439481
 created: 1652360646834
-url: "{{ base_url }}/user/abc"
+url: "{{ base_url }}/user/{{ username }}"
 name: Get user by user name
 description: ""
 method: GET

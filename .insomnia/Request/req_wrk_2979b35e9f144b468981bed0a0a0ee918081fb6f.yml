@@ -9,7 +9,10 @@ description: ""
 method: POST
 body:
   mimeType: multipart/form-data
-parameters: []
+parameters:
+  - name: additionalMetadata
+    disabled: true
+    value: string
 headers: []
 authentication:
   clientId: "{{ oauth2ClientId }}"
