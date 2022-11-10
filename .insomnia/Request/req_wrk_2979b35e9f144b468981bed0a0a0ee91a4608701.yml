@@ -16,7 +16,10 @@ parameters:
   - name: status
     disabled: true
     value: string
-headers: []
+headers:
+  - name: Content-Type
+    disabled: false
+    value: string
 authentication:
   clientId: "{{ oauth2ClientId }}"
   grantType: implicit

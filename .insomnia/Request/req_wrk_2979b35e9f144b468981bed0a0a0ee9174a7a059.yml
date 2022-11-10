@@ -31,6 +31,7 @@ body:
 parameters: []
 headers:
   - name: Content-Type
+    disabled: false
     value: application/json
     id: pair_e5d99a06deae4738b323ac70027872c4
 authentication:
