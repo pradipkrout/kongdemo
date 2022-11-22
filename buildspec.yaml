@@ -12,13 +12,15 @@ phases:
       - tar -xf deck.tar.gz -C /tmp
       - sudo cp /tmp/deck /usr/local/bin/
       - deck version
-      - ./inso --version
+      - sudo cp ./inso /usr/local/bin/
+      - inso --version
+      - pwd
   build:
     commands:
-      - ./inso export spec Petstore.yaml > Petstore.yaml
-      - ./inso lint spec Petstore.yaml
-      - ./inso generate config Petstore.yaml --type declarative > PetstoreKong.yaml
+      - inso export spec Petstore.yaml > Petstore.yaml
+      - inso lint spec Petstore.yaml
+      - inso generate config Petstore.yaml --type declarative > PetstoreKong.yaml
       - deck validate -s PetstoreKong.yaml
-      - ./inso run test PetTestSuite
+      - inso run test PetTestSuite
       - deck sync --kong-addr http://3.236.54.44:8001 --select-tag "Petstore" -s "PetstoreKong.yaml" --workspace "kongdemo" --headers "kong-admin-token:JUR0t0Y6e07JBw4sj87L0pIuEloQ9Rer"
       - curl -i -X PUT http://3.236.54.44:8001/kongdemo/files/specs/Petstore.yaml -F "contents=@Petstore.yaml" --header "kong-admin-token:JUR0t0Y6e07JBw4sj87L0pIuEloQ9Rer"
