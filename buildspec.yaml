@@ -3,24 +3,37 @@ version: 0.1
 phases:
   install:
     commands:
-      - echo "deb [trusted=yes arch=amd64] https://download.konghq.com/insomnia-ubuntu/ default all" | sudo tee -a /etc/apt/sources.list.d/insomnia.list
-      - sudo apt-get update -y
-      - sudo apt-get install insomnia -y
+      ## - echo "deb [trusted=yes arch=amd64] https://download.konghq.com/insomnia-ubuntu/ default all" | sudo tee -a /etc/apt/sources.list.d/insomnia.list
+      ## - sudo apt-get update -y
+      ## - sudo apt-get install insomnia -y
+      # Download Inso CLI tar file
       - curl -sL https://github.com/Kong/insomnia/releases/download/lib%403.6.0/inso-linux-3.6.0.tar.xz -o inso-linux.xz
-      - tar -xf inso-linux.xz
+      # Unzip the inso CLI compressed file
+      - tar -xf inso-linux.xz -C /tmp
+      # Copy inso cli file from tmp directory to bin 
+      - sudo cp /tmp/inso /usr/local/bin/
+      # Download Deck CLI file
       - curl -sL https://github.com/kong/deck/releases/download/v1.16.1/deck_1.16.1_linux_amd64.tar.gz -o deck.tar.gz
+      # Unzip deck CLI tar file
       - tar -xf deck.tar.gz -C /tmp
+      # copy deck file from tmp to bin directory
       - sudo cp /tmp/deck /usr/local/bin/
       - deck version
-      - sudo cp ./inso /usr/local/bin/
       - inso --version
       - pwd
   build:
     commands:
+      # export api spec 
       - inso export spec Petstore.yaml > Petstore.yaml
+      #verify the exported api spec
       - inso lint spec Petstore.yaml
+      #generate declarative from open api spec
       - inso generate config Petstore.yaml --type declarative > PetstoreKong.yaml
+      #validate the declarative spec generated
       - deck validate -s PetstoreKong.yaml
+      #run the test suite
       - inso run test PetTestSuite
+      #sync the declarative to kong runtime using deck
       - deck sync --kong-addr http://3.236.54.44:8001 --select-tag "Petstore" -s "PetstoreKong.yaml" --workspace "kongdemo" --headers "kong-admin-token:JUR0t0Y6e07JBw4sj87L0pIuEloQ9Rer"
+      #publish open api specification to dev portal
       - curl -i -X PUT http://3.236.54.44:8001/kongdemo/files/specs/Petstore.yaml -F "contents=@Petstore.yaml" --header "kong-admin-token:JUR0t0Y6e07JBw4sj87L0pIuEloQ9Rer"
