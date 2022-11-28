@@ -35,6 +35,6 @@ phases:
       - inso run test PetTestSuite
       #sync the declarative to kong runtime using deck
       ## - deck sync --kong-addr http://3.236.54.44:8001 --select-tag "Petstore" -s "PetstoreKong.yaml" --workspace "kongdemo" --headers "kong-admin-token:JUR0t0Y6e07JBw4sj87L0pIuEloQ9Rer"
-      - deck sync --select-tag "Petstore" -s "$apispecname"Kong.yaml --konnect-token kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv 
+      - deck sync --select-tag "Petstore" -s "PetstoreKong.yaml" --konnect-token kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv 
       #publish open api specification to dev portal
       - curl -i -X PUT http://3.236.54.44:8001/kongdemo/files/specs/Petstore.yaml -F "contents=@Petstore.yaml" --header "kong-admin-token:JUR0t0Y6e07JBw4sj87L0pIuEloQ9Rer"
