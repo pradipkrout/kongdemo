@@ -7,13 +7,13 @@ phases:
       ## - sudo apt-get update -y
       ## - sudo apt-get install insomnia -y
       # Download Inso CLI tar file
-      - curl -sL "$insolib" -o inso-linux.xz && tar -xf inso-linux.xz -C /tmp && sudo cp /tmp/inso /usr/local/bin/ && deck version
+      - curl -sL "$insolib" -o inso-linux.xz && tar -xf inso-linux.xz -C /tmp && sudo cp /tmp/inso /usr/local/bin/ && inso --version
       # Unzip the inso CLI compressed file
       ## - tar -xf inso-linux.xz -C /tmp
       # Copy inso cli file from tmp directory to bin 
       ## - sudo cp /tmp/inso /usr/local/bin/
       # Download Deck CLI file
-      - curl -sL "$decklib" -o deck.tar.gz && tar -xf deck.tar.gz -C /tmp && sudo cp /tmp/deck /usr/local/bin/ && inso --version && pwd
+      - curl -sL "$decklib" -o deck.tar.gz && tar -xf deck.tar.gz -C /tmp && sudo cp /tmp/deck /usr/local/bin/ && deck version && pwd
       # Unzip deck CLI tar file
       ## - tar -xf deck.tar.gz -C /tmp
       # copy deck file from tmp to bin directory
