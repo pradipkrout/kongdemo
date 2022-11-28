@@ -28,9 +28,9 @@ phases:
       #verify the exported api spec
       - inso lint spec Petstore.yaml
       #generate declarative from open api spec
-      - inso generate config Petstore.yaml --type declarative > PetstoreKong.yaml
+      - inso generate config Petstore.yaml --type declarative > PetstoreKongDecl.yaml
       #validate the declarative spec generated
-      - deck validate -s PetstoreKong.yaml
+      - deck validate -s PetstoreKongDecl.yaml
       #run the test suite
       - inso run test PetTestSuite
       #sync the declarative to kong runtime using deck
