@@ -7,24 +7,24 @@ phases:
       ## - sudo apt-get update -y
       ## - sudo apt-get install insomnia -y
       # Download Inso CLI tar file
-      - curl -sL https://github.com/Kong/insomnia/releases/download/lib%403.6.0/inso-linux-3.6.0.tar.xz -o inso-linux.xz
+      - curl -sL "$insolib" -o inso-linux.xz && tar -xf inso-linux.xz -C /tmp && sudo cp /tmp/inso /usr/local/bin/ && deck version
       # Unzip the inso CLI compressed file
-      - tar -xf inso-linux.xz -C /tmp
+      ## - tar -xf inso-linux.xz -C /tmp
       # Copy inso cli file from tmp directory to bin 
-      - sudo cp /tmp/inso /usr/local/bin/
+      ## - sudo cp /tmp/inso /usr/local/bin/
       # Download Deck CLI file
-      - curl -sL https://github.com/kong/deck/releases/download/v1.16.1/deck_1.16.1_linux_amd64.tar.gz -o deck.tar.gz
+      - curl -sL "$decklib" -o deck.tar.gz && tar -xf deck.tar.gz -C /tmp && sudo cp /tmp/deck /usr/local/bin/ && inso --version && pwd
       # Unzip deck CLI tar file
-      - tar -xf deck.tar.gz -C /tmp
+      ## - tar -xf deck.tar.gz -C /tmp
       # copy deck file from tmp to bin directory
-      - sudo cp /tmp/deck /usr/local/bin/
-      - deck version
-      - inso --version
-      - pwd
+      ## - sudo cp /tmp/deck /usr/local/bin/
+      ## - deck version
+      ## - inso --version
+      ## - pwd
   build:
     commands:
       # export api spec 
-      - inso export spec Petstore.yaml > Petstore.yaml
+      - inso export spec $apispecname > $apispecname
       #verify the exported api spec
       - inso lint spec Petstore.yaml
       #generate declarative from open api spec
