@@ -4,8 +4,8 @@ import yaml
 from jinja2 import Environment, FileSystemLoader
 from jinja2.exceptions import TemplateNotFound
 
-konnect_service_name = os.environ.get('KONNECT_SERVICE_NAME')
-konnect_runtime_group = os.environ.get('KONNECT_RUNTIME_GROUP')
+konnect_service_name = 'mockbin'
+konnect_runtime_group = 'dev'
 
 if not os.path.exists('results'):
     os.makedirs('results')
