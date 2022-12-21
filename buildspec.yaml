@@ -57,7 +57,7 @@ phases:
       #run the test suite
       - inso run test PetTestSuite
       - chmod 755 ./generate_yaml.py
-      - ./generate_yaml.py
+      - python3 ./generate_yaml.py
       #sync the declarative to kong runtime using deck
       - deck dump --konnect-token "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv"
       ## - deck sync --kong-addr http://3.236.54.44:8001 --select-tag "Petstore" -s "PetstoreKongDecl3.yaml" --workspace "kongdemo" --headers "kong-admin-token:JUR0t0Y6e07JBw4sj87L0pIuEloQ9Rer"
