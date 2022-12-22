@@ -45,6 +45,7 @@ phases:
     commands:
       # export api spec 
       - echo "kong token value is $kongToken"
+      - sh ./scripts/action.sh "a1" "b2"
       - inso export spec "$apispecname" > "$apispecname"
       #verify the exported api spec
       - inso lint spec Petstore.yaml
