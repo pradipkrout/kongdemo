@@ -5,6 +5,11 @@ env:
   variables:
     kongToken: "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv"
     envt: "dev"
+    konnect_addr: "https://us.api.konghq.com"
+    konnect_runtime_group: "default"
+    konnect_token: "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv"
+    kong_file: "default"
+    select_tags: "Petstore,OAS3_import"
   #parameter-store:
    # key: "value"
    # key: "value"
@@ -45,7 +50,8 @@ phases:
     commands:
       # export api spec 
       - echo "kong token value is $kongToken $envt"
-      - sh ./scripts/action.sh "a1" "b2"
+      #- sh ./scripts/action.sh "a1" "b2"
+      -sh ./scripts/deck_dump.sh -runtime-group-name $konnect_runtime_group -token $konnect_token -addr $konnect_addr -tags $select_tags 
       - inso export spec "$apispecname" > "$apispecname"
       #verify the exported api spec
       - inso lint spec Petstore.yaml
