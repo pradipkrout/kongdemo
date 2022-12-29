@@ -1,10 +1,10 @@
-version: 0.1
+version: 0.2
 ##run-as: ec2-user
 env:
   #shell: shell-tag
   variables:
     kongToken: "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv"
-    env: "dev"
+    envt: "dev"
   #parameter-store:
    # key: "value"
    # key: "value"
@@ -44,7 +44,7 @@ phases:
   build:
     commands:
       # export api spec 
-      - echo "kong token value is $kongToken $env"
+      - echo "kong token value is $kongToken $envt"
       - sh ./scripts/action.sh "a1" "b2"
       - inso export spec "$apispecname" > "$apispecname"
       #verify the exported api spec
