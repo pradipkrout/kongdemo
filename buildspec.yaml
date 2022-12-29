@@ -51,6 +51,7 @@ phases:
       # export api spec 
       - echo "kong token value is $kongToken $envt"
       #- sh ./scripts/action.sh "a1" "b2"
+      -sh ./scripts/deck_dump.sh -r "default" -t "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv" -a "https://us.api.konghq.com" -s "Petstore,OAS3_import"
       -sh ./scripts/deck_dump.sh -r $konnect_runtime_group -t $konnect_token -a $konnect_addr -s $select_tags 
       - inso export spec "$apispecname" > "$apispecname"
       #verify the exported api spec
