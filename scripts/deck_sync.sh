@@ -20,7 +20,7 @@ echo $konnectvalidcheck
 
 case $konnectvalidcheck in
 
-  *"Successfully"*)
+  *"Valid"*)
     deck diff --konnect-token $2 --konnect-addr $3 --konnect-runtime-group-name $1 -s $4/results/$5 > konnect_diff
     deck sync --konnect-addr $3 --konnect-token $2 --konnect-runtime-group-name $1 -s $(System.DefaultWorkingDirectory)/results/${{ parameters.kong_file }}
     ;;
