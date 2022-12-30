@@ -1,4 +1,7 @@
 #!/bin/sh
 
 echo "exeuction of script $0 and $1"
-deck $1 --konnect-runtime-group-name $2 --konnect-token $3 --tls-skip-verify
+deck ping --konnect-runtime-group-name $1 --konnect-token $2 --tls-skip-verify > konnect_ping
+if [[ `cat konnect_ping` == *"Successfully"* ]]; then
+echo "Inside if block"
+fi
