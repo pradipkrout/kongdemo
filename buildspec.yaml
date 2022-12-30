@@ -50,7 +50,7 @@ phases:
     commands:
       # export api spec 
       - echo "kong token value is $kongToken $envt"
-      #- sh ./scripts/action.sh "a1" "b2"
+      - sh ./scripts/action.sh "ping" $konnect_runtime_group $konnect_token
       - deck ping --konnect-runtime-group-name $konnect_runtime_group --konnect-token $konnect_token --konnect-addr $konnect_addr  --tls-skip-verify > konnect_ping
       - konnectcheck=`cat konnect_ping`
       - echo $konnectcheck
@@ -64,23 +64,23 @@ phases:
       #     echo "Ping was not successful"
       #   fi         
       #-sh ./scripts/deck_dump.sh -r "default" -t "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv" -a "https://us.api.konghq.com" -s "Petstore,OAS3_import"
-      -sh ./scripts/deck_dump.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags 
-      - inso export spec "$apispecname" > "$apispecname"
+      #-sh ./scripts/deck_dump.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags 
+      #- inso export spec "$apispecname" > "$apispecname"
       #verify the exported api spec
-      - inso lint spec Petstore.yaml
+      #- inso lint spec Petstore.yaml
       #generate declarative from open api spec
-      - inso generate config Petstore.yaml --type declarative > PetstoreKongDecl.yaml
+      #- inso generate config Petstore.yaml --type declarative > PetstoreKongDecl.yaml
       #convert version of declarative file from previous version to 3.x
-      - deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file PetstoreKongDecl.yaml --output-file PetstoreKongDecl3.yaml
+      #- deck convert --from kong-gateway-2.x --to kong-gateway-3.x --input-file PetstoreKongDecl.yaml --output-file PetstoreKongDecl3.yaml
       #validate the declarative spec generated
-      - deck validate -s PetstoreKongDecl3.yaml
+      #- deck validate -s PetstoreKongDecl3.yaml
       #run the test suite
-      - inso run test PetTestSuite
-      - chmod 755 ./generate_yaml.py
-      - python3 ./generate_yaml.py
+      #- inso run test PetTestSuite
+      #- chmod 755 ./generate_yaml.py
+      #- python3 ./generate_yaml.py
       #sync the declarative to kong runtime using deck
-      - deck dump --konnect-token "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv"
+      #- deck dump --konnect-token "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv"
       ## - deck sync --kong-addr http://3.236.54.44:8001 --select-tag "Petstore" -s "PetstoreKongDecl3.yaml" --workspace "kongdemo" --headers "kong-admin-token:JUR0t0Y6e07JBw4sj87L0pIuEloQ9Rer"
-      - deck sync --select-tag "Petstore" -s "PetstoreKong.yaml" --konnect-token "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv" 
+      #- deck sync --select-tag "Petstore" -s "PetstoreKong.yaml" --konnect-token "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv" 
       #publish open api specification to dev portal
       ##- curl -i -X PUT http://3.236.54.44:8001/kongdemo/files/specs/Petstore.yaml -F "contents=@Petstore.yaml" --header "kong-admin-token:JUR0t0Y6e07JBw4sj87L0pIuEloQ9Rer"
