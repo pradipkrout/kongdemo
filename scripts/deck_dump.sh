@@ -10,8 +10,7 @@ echo $konnectcheck
 case $konnectcheck in
 
   *"Successfully"*)
-    echo -n "It's there."
-     mkdir results
+    mkdir results
     datenow=$(date "+%F-%H-%M-%S")
     echo "date now is $datenow"
     deck dump --konnect-runtime-group-name $1 --konnect-token $2 --konnect-addr $3 --select-tag $4 --yes --format yaml --output-file results/konnect-${datenow}.yaml --tls-skip-verify
