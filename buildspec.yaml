@@ -55,7 +55,7 @@ phases:
       - konnectcheck=`cat konnect_ping`
       - echo $konnectcheck
       - |
-         if [[ $konnectcheck =~ "Successfully" ]]; then
+         if [ $konnectcheck =~ "Successfully" ]; then
            mkdir results;
            datenow=$(date "+%F-%H-%M-%S");
            echo "value of date is $datenow";
