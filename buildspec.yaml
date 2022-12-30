@@ -52,9 +52,10 @@ phases:
       - echo "kong token value is $kongToken $envt"
       #- sh ./scripts/action.sh "a1" "b2"
       - deck ping --konnect-runtime-group-name $konnect_runtime_group --konnect-token $konnect_token --konnect-addr $konnect_addr  --tls-skip-verify > konnect_ping
-      - cat konnect_ping
+      - konnectcheck=`cat konnect_ping`
+      - echo $konnectcheck
       - |
-         if [[ `cat konnect_ping` =~ "Successfully" ]]; then
+         if [[ $konnectcheck =~ "Successfully" ]]; then
            mkdir results;
            datenow=$(date "+%F-%H-%M-%S");
            echo "value of date is $datenow";
