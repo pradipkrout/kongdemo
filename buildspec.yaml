@@ -54,17 +54,17 @@ phases:
       - deck ping --konnect-runtime-group-name $konnect_runtime_group --konnect-token $konnect_token --konnect-addr $konnect_addr  --tls-skip-verify > konnect_ping
       - konnectcheck=`cat konnect_ping`
       - echo $konnectcheck
-      - |
-         if [ $konnectcheck =~ "Successfully" ]; then
-           mkdir results;
-           datenow=$(date "+%F-%H-%M-%S");
-           echo "value of date is $datenow";
-           deck dump --konnect-runtime-group-name $KONNECT_RUNTIME_GROUP --konnect-token $KONNECT_TOKEN --konnect-addr $KONNECT_ADDR --select-tag $SELECT_TAGS --yes --format yaml --output-file results/konnect-${datenow}.yaml --tls-skip-verify;
-         else
-           echo "Ping was not successful"
-         fi         
+      #- |
+      #   if [ $konnectcheck =~ "Successfully" ]; then
+      #     mkdir results;
+      #     datenow=$(date "+%F-%H-%M-%S");
+      #     echo "value of date is $datenow";
+      #     deck dump --konnect-runtime-group-name $KONNECT_RUNTIME_GROUP --konnect-token $KONNECT_TOKEN --konnect-addr $KONNECT_ADDR --select-tag $SELECT_TAGS --yes --format yaml --output-file results/konnect-${datenow}.yaml --tls-skip-verify;
+      #   else
+      #     echo "Ping was not successful"
+      #   fi         
       #-sh ./scripts/deck_dump.sh -r "default" -t "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv" -a "https://us.api.konghq.com" -s "Petstore,OAS3_import"
-      #-sh ./scripts/deck_dump.sh -r $konnect_runtime_group -t $konnect_token -a $konnect_addr -s $select_tags 
+      -sh ./scripts/deck_dump.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags 
       - inso export spec "$apispecname" > "$apispecname"
       #verify the exported api spec
       - inso lint spec Petstore.yaml
