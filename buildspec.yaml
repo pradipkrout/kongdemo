@@ -53,7 +53,7 @@ phases:
       #- sh ./scripts/action.sh "a1" "b2"
       - deck ping --konnect-runtime-group-name $konnect_runtime_group --konnect-token $konnect_token --konnect-addr $konnect_addr  --tls-skip-verify > konnect_ping
       - |
-         if [[ cat konnect_ping == *"Successfully"* ]]; then\
+         if [ `cat konnect_ping` =~ "Successfully" ]; then\
            mkdir results;
            datenow=$(date "+%F-%H-%M-%S");
            deck dump --konnect-runtime-group-name $KONNECT_RUNTIME_GROUP --konnect-token $KONNECT_TOKEN --konnect-addr $KONNECT_ADDR --select-tag $SELECT_TAGS --yes --format yaml --output-file results/konnect-${datenow}.yaml --tls-skip-verify;
