@@ -50,7 +50,7 @@ phases:
     commands:
       # export api spec 
       - echo "kong token value is $kongToken $envt"
-      - sh ./scripts/action.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags
+      - sh ./scripts/deck_dump.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags
       #- deck ping --konnect-runtime-group-name $konnect_runtime_group --konnect-token $konnect_token --konnect-addr $konnect_addr  --tls-skip-verify > konnect_ping
       #- konnectcheck=`cat konnect_ping`
       #- echo $konnectcheck
