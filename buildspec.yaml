@@ -10,6 +10,7 @@ env:
     konnect_addr: "https://us.api.konghq.com"
     konnect_runtime_group: "default"
     konnect_token: "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv"
+    default_path: "../results"
     kong_file: "default"
     select_tags: "Petstore,OAS3_import"
   #parameter-store:
@@ -63,7 +64,7 @@ phases:
       - |
          if [ "$deck_sync" = "yes" ]; then
             echo "run my command"
-            sh ./scripts/deck_sync.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags
+            sh ./scripts/deck_sync.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags $default_path $kong_file
          else
             echo "skip deck sync execution"
           fi
