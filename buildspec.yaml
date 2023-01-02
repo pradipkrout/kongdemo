@@ -50,9 +50,9 @@ phases:
   build:
     commands:
       # export api spec 
-      - echo "kong token value is $kongToken $envt"
+      - echo "kong token value is $kongToken $envt deck dump required $deck_dump"
       - |
-         if [[ "$deck_dump" == "yes" ]]; then
+         if [ "$deck_dump" = "yes" ]; then
             echo "run my command"
          else
             echo "skip dump execution"
