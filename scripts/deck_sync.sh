@@ -30,5 +30,5 @@ esac
 inso run test PetTestSuite
 chmod 755 ../generate_yaml.py
 python3 ../generate_yaml.py
-deck diff --konnect-runtime-group-name $1 --konnect-token $2 --konnect-addr $3 -s $4/results/$5 > konnect_diff
-deck sync --konnect-runtime-group-name $1 --konnect-token $2 --konnect-addr $3 -s $4/results/$5 > konnect_sync
+deck diff --konnect-runtime-group-name $1 --konnect-token $2 --konnect-addr $3 -s $5/results/$6 > konnect_diff
+deck sync --konnect-runtime-group-name $1 --konnect-token $2 --konnect-addr $3 -s $5/results/$6 > konnect_sync
