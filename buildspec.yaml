@@ -10,7 +10,7 @@ env:
     konnect_addr: "https://us.api.konghq.com"
     konnect_runtime_group: "default"
     konnect_token: "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv"
-    default_path: "../results"
+    default_path: "./results"
     kong_file: "mockbin_dev.yaml"
     select_tags: "Petstore,OAS3_import"
   #parameter-store:
