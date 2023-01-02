@@ -4,13 +4,13 @@ env:
   #shell: shell-tag
   variables:
     kongToken: "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv"
-    deck_dump: "yes"
-    deck_sync: "no"
+    deck_dump: "no"
+    deck_sync: "yes"
     envt: "dev"
     konnect_addr: "https://us.api.konghq.com"
     konnect_runtime_group: "default"
     konnect_token: "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv"
-    default_path: "../results"
+    default_path: "../kong"
     kong_file: "default"
     select_tags: "Petstore,OAS3_import"
   #parameter-store:
@@ -64,7 +64,7 @@ phases:
       - |
          if [ "$deck_sync" = "yes" ]; then
             echo "run my command"
-            sh ./scripts/deck_sync.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags $default_path $kong_file
+            sh ./scripts/deck_sync.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags $default_path $kong_file $envt
          else
             echo "skip deck sync execution"
           fi
