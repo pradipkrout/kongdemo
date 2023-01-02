@@ -65,7 +65,7 @@ phases:
             echo "run my command"
             sh ./scripts/deck_sync.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags
          else
-            echo "skip dump execution"
+            echo "skip deck sync execution"
           fi
       #- deck ping --konnect-runtime-group-name $konnect_runtime_group --konnect-token $konnect_token --konnect-addr $konnect_addr  --tls-skip-verify > konnect_ping
       #- konnectcheck=`cat konnect_ping`
