@@ -1,5 +1,5 @@
 ---
-konnect_runtime_group: dev
+konnect_runtime_group: default
 select_tags:
   - mockbin_dev
 services:
