@@ -5,6 +5,7 @@ env:
   variables:
     kongToken: "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv"
     deck_dump: "yes"
+    deck_sync: "no"
     envt: "dev"
     konnect_addr: "https://us.api.konghq.com"
     konnect_runtime_group: "default"
@@ -54,10 +55,18 @@ phases:
       - |
          if [ "$deck_dump" = "yes" ]; then
             echo "run my command"
+            sh ./scripts/deck_dump.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags
          else
             echo "skip dump execution"
           fi
-      - sh ./scripts/deck_dump.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags
+      #- sh ./scripts/deck_dump.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags
+      - |
+         if [ "$deck_sync" = "yes" ]; then
+            echo "run my command"
+            sh ./scripts/deck_sync.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags
+         else
+            echo "skip dump execution"
+          fi
       #- deck ping --konnect-runtime-group-name $konnect_runtime_group --konnect-token $konnect_token --konnect-addr $konnect_addr  --tls-skip-verify > konnect_ping
       #- konnectcheck=`cat konnect_ping`
       #- echo $konnectcheck
