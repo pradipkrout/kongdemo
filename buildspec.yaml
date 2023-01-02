@@ -4,6 +4,7 @@ env:
   #shell: shell-tag
   variables:
     kongToken: "kpat_0fRrY2grSEAbJ7Hw8fQfcmupGxYTdRi80AqpHrZ3i1IgTrPJv"
+    deck_dump: "yes"
     envt: "dev"
     konnect_addr: "https://us.api.konghq.com"
     konnect_runtime_group: "default"
@@ -50,6 +51,12 @@ phases:
     commands:
       # export api spec 
       - echo "kong token value is $kongToken $envt"
+      - |-
+         if [ "$deck_dump" -eq "yes" ]; then
+            echo "run my command"
+         else
+            echo "skip dump execution"
+          fi
       - sh ./scripts/deck_dump.sh $konnect_runtime_group $konnect_token $konnect_addr $select_tags
       #- deck ping --konnect-runtime-group-name $konnect_runtime_group --konnect-token $konnect_token --konnect-addr $konnect_addr  --tls-skip-verify > konnect_ping
       #- konnectcheck=`cat konnect_ping`
