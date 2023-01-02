@@ -10,18 +10,25 @@ echo $konnectcheck
 case $konnectcheck in
 
   *"Successfully"*)
-    chmod 755 ./generate_yaml.py
-    python3 ./generate_yaml.py
-    deck validate --konnect-addr $3 --konnect-token $2 --konnect-runtime-group-name $1 -s $4/results/$5 > konnect_validate
+    mkdir results
+    datenow=$(date "+%F-%H-%M-%S")
+    echo "date now is $datenow"
+    deck validate --konnect-runtime-group-name $1 --konnect-token $2 --konnect-addr $3 -s $4/results/$5 > konnect_validate
+    declvalidatechk=`cat konnect_ping`
+    echo $declvalidatechk
     ;;
 esac
-konnectvalidcheck=`cat konnect_validate`
-echo $konnectvalidcheck
 
-case $konnectvalidcheck in
+case $konnectcheck in
 
-  *"Valid"*)
-    deck diff --konnect-token $2 --konnect-addr $3 --konnect-runtime-group-name $1 -s $4/results/$5 > konnect_diff
-    deck sync --konnect-addr $3 --konnect-token $2 --konnect-runtime-group-name $1 -s $(System.DefaultWorkingDirectory)/results/${{ parameters.kong_file }}
+  *"Error"*)
+    
+    echo "Error in declarative file"
+    exit
     ;;
 esac
+inso run test PetTestSuite
+chmod 755 ../generate_yaml.py
+python3 ../generate_yaml.py
+deck diff --konnect-runtime-group-name $1 --konnect-token $2 --konnect-addr $3 -s $4/results/$5 > konnect_diff
+deck sync --konnect-runtime-group-name $1 --konnect-token $2 --konnect-addr $3 -s $4/results/$5 > konnect_sync
