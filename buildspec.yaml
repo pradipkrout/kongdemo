@@ -52,7 +52,7 @@ phases:
       # export api spec 
       - echo "kong token value is $kongToken $envt"
       - |-
-         if [ "$deck_dump" == "yes" ]; then
+         if [[ "$deck_dump" == "yes" ]]; then
             echo "run my command"
          else
             echo "skip dump execution"
