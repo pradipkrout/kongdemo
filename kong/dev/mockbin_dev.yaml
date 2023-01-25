@@ -6,6 +6,12 @@ services:
   - service_name: mockbin
     host: mockbin.org
     path: /echo
+    plugins:
+      - config:
+          add:
+            headers:
+              - x-api-key:h3J2WewI146VGyMYJln6r67BE7DdaWTk8SQ7NyE8
+        plugin_name: request-transformer-advanced
     routes:
       - hosts: 
           - mockbin.org
