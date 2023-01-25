@@ -18,6 +18,44 @@ services:
   protocol: http
   read_timeout: 60000
   retries: 5
+  {% for plugin in service.plugins %}
+  plugins:
+  - config:
+      add:
+        body: []
+        headers:
+        {% for header in plugin.headers %}
+        - {{ header }}
+        {% endfor %}
+        querystring: []
+      allow:
+        body: null
+      append:
+        body: []
+        headers: []
+        querystring: []
+      http_method: null
+      remove:
+        body: []
+        headers: []
+        querystring: []
+      rename:
+        body: []
+        headers: []
+        querystring: []
+      replace:
+        body: []
+        headers: []
+        querystring: []
+        uri: null
+    enabled: true
+    name: {{ plugin_name }}
+    protocols:
+    - grpc
+    - grpcs
+    - http
+    - https
+  {% endfor %}
   routes:
   {% for route in service.routes %}
   - name: mockbin
