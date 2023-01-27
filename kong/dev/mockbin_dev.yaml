@@ -12,7 +12,7 @@ services:
   - config:
       add:
         headers:
-        - x-api-key:habceceddd8
+        - x-api-key:$kongToken
     name: request-transformer
   port: 443
   protocol: https
