@@ -12,10 +12,10 @@ services:
 - connect_timeout: 60000
   enabled: true
   host: {{ service.host }}
-  name: mockbin_{{ konnect_runtime_group }}
+  name: {{ service.name }}
   path: {{ service.path }}
-  port: 80
-  protocol: http
+  port: 443
+  protocol: https
   read_timeout: 60000
   retries: 5
   plugins:
@@ -49,7 +49,7 @@ services:
         querystring: []
         uri: null
     enabled: true
-    name: {{ plugin.plugin_name }}
+    name: {{ plugin.name }}
     protocols:
     - grpc
     - grpcs
@@ -58,42 +58,23 @@ services:
   {% endfor %}
   routes:
   {% for route in service.routes %}
-  - name: mockbin
-    hosts:
-    {% for host in route.hosts %}
-     - {{ host }}
-    {% endfor %}
+  - name: {{ route.name }}
     https_redirect_status_code: 426
-    {# id: 7f6cf12f-26fd-44c4-be13-b4e523b88d23 #}
     path_handling: v0
-    paths:
-    {% for path in route.paths %}
+    paths: 
+	{% for path in route.paths %}
      - {{ path }}
     {% endfor %}
-    plugins:
-    - config:
-        anonymous: null
-        hide_credentials: false
-      enabled: true
-      name: basic-auth
-      protocols:
-      - grpc
-      - grpcs
-      - http
-      - https
     preserve_host: false
     protocols:
     - http
     - https
     regex_priority: 0
-    snis:
-    {% for sni in route.snis %}
-     - {{ sni }}
-    {% endfor %}
+    request_buffering: true
+    response_buffering: true
     strip_path: true
   tags:
-  - {{ service.service_name }}_{{ konnect_runtime_group }}
-  - _KonnectService:{{ service.service_name }}
+  - _KonnectService:{{ service_name }}
   write_timeout: 60000
   {% endfor %}
 {% endfor %}
