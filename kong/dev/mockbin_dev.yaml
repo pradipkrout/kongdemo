@@ -5,20 +5,20 @@ select_tags:
   - test
   - test-service-dev
 services:
-  - name: test_gwsvc_dev
-    host: test.io
-    path: /testSvc/api
-	plugins:
+- name: test_gwsvc_dev
+  host: test.io
+  path: /testSvc/api
+  plugins:
   - config:
       add:
         headers:
         - x-api-key:habceceddd8
     name: request-transformer
-    port: 443
-    protocol: https
-    read_timeout: 30000
-    retries: 5
-    routes:
-      - name: test_route_dev
-        paths: 
-          - /test/testService/api
+  port: 443
+  protocol: https
+  read_timeout: 30000
+  retries: 5
+  routes:
+  - name: test_route_dev
+      paths: 
+      - /test/testService/api
