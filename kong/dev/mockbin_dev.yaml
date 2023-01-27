@@ -1,21 +1,24 @@
 ---
-konnect_runtime_group: default
+konnect_runtime_group: internal
+service_name: InternalTaxServiceDev
 select_tags:
-  - mockbin_dev
+  - test
+  - test-service-dev
 services:
-  - service_name: mockbin
-    host: mockbin.org
-    path: /echo
-    plugins:
-      - config:
-          add:
-            headers:
-              - x-api-key:h3J2WewI146VGyMYJln6r67BE7DdaWTk8SQ7NyE8
-        plugin_name: request-transformer
+  - name: test_gwsvc_dev
+    host: test.io
+    path: /testSvc/api
+	plugins:
+  - config:
+      add:
+        headers:
+        - x-api-key:habceceddd8
+    name: request-transformer
+    port: 443
+    protocol: https
+    read_timeout: 30000
+    retries: 5
     routes:
-      - hosts: 
-          - mockbin.org
+      - name: test_route_dev
         paths: 
-          - /echo
-        snis: 
-          - mockbin.org
+          - /test/testService/api
