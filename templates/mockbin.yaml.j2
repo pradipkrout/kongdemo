@@ -2,9 +2,9 @@ _format_version: "3.0"
 _info:
   defaults: {}
   select_tags:
-    {% for tag in select_tags %}
-     - {{ tag }}
-    {% endfor %}
+  {% for tag in select_tags %}
+  - {{ tag }}
+  {% endfor %}
 _konnect:
   runtime_group_name: {{ konnect_runtime_group }}
 services:
