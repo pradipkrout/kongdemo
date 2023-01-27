@@ -1,5 +1,5 @@
 ---
-konnect_runtime_group: internal
+konnect_runtime_group: default
 service_name: InternalTaxServiceDev
 select_tags:
   - test
