@@ -30,7 +30,7 @@ esac
 inso run test PetTestSuite
 chmod 755 ./generate_yaml.py
 python3 ./generate_yaml.py 'mockbin' 'dev'
-sed -i 's/x-api-key-value/abbbeeeeddddddd/g' $5/$6
+sed -i 's/x-api-key-value/$2/g' $5/$6
 cat $5/$6
 deck diff --konnect-runtime-group-name $1 --konnect-token $2 --konnect-addr $3 -s $5/$6 > konnect_diff
 deck sync --konnect-runtime-group-name $1 --konnect-token $2 --konnect-addr $3 -s $5/$6 > konnect_sync
